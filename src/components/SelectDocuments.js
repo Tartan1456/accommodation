@@ -9,10 +9,17 @@ function SelectDocuments() {
   });
 
   const handleRadioChange = (e) => {
-    console.log('yeet')
     const radioButtonName = e.target.value;
-    setSelectedValues(selectedValues => selectedValues.radioButtonName = !selectedValues.radioButtonName)
-  } 
+    setSelectedValues(selectedValues => {
+      const newSelectedValues = { ...selectedValues };
+      newSelectedValues[radioButtonName] = !newSelectedValues[radioButtonName];
+      return {...newSelectedValues}
+    })
+  }
+
+  useEffect(() => {
+    console.log(selectedValues)
+  }, [selectedValues])
 
   return (
     <form className="select-documents">
