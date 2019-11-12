@@ -1,0 +1,12 @@
+.button {
+  background-color: #ee5723;
+  border: none;
+  border-radius: 0.5em;
+  color: #FFFFFF;
+  font-weight: bold;
+  padding: 1em 1.5em;
+
+  &--secondary {
+    background-color: #85c9d1;
+  }
+}
