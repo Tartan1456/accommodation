@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './components/Card';
 import Header from './components/Header';
 import SelectDocuments from './components/SelectDocuments';
+import Button from './components/Button';
 import './styles/App.scss';
 
 function App() {
@@ -14,18 +15,19 @@ function App() {
         <div className="cards">
           <Card
             title="Select 2 documents from the list:"
-            buttonText="Proceed with selected docs"
           >
             <SelectDocuments />
           </Card>
           <Card
             title="Select 2 documents from the list:"
-            buttonText="Proceed with selected docs"
-            secondaryButton
           >
             <p>
               You only need to upload one page with the photo from your passport. Additionally, we will ask for visa for non-european passports.
             </p>
+            <Button
+              secondaryButton
+              text="Proceed with selected docs"
+            />
           </Card>
         </div>
       </main>

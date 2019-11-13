@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/SelectDocuments.scss';
+import '../styles/Button.scss';
 
 function SelectDocuments() {
   const [selectedValues, setSelectedValues] = useState({
@@ -7,6 +8,8 @@ function SelectDocuments() {
     nationalID: false,
     biometric: false
   });
+
+  const [submitDisabled, setSubmitDisabled] = useState(true);
 
   const handleRadioChange = (e) => {
     const radioButtonName = e.target.value;
@@ -18,23 +21,37 @@ function SelectDocuments() {
   }
 
   useEffect(() => {
-    console.log(selectedValues)
+    let checkedBoxes = 0;
+    Object.values(selectedValues).map(selectedValue => {
+      if (selectedValue) {
+        checkedBoxes++
+      }
+
+      return checkedBoxes;
+    })
+
+    if (checkedBoxes > 1 && checkedBoxes < 3) {
+      setSubmitDisabled(!submitDisabled);
+    } else {
+      setSubmitDisabled(true);
+    }
   }, [selectedValues])
 
   return (
     <form className="select-documents">
       <label>
-        <input type="radio" value="drivingLicense" checked={selectedValues.drivingLicense} onChange={handleRadioChange} />
+        <input type="checkbox" value="drivingLicense" checked={selectedValues.drivingLicense} onChange={handleRadioChange} />
         Driving license
       </label>
       <label>
-        <input type="radio" value="nationalID" checked={selectedValues.nationalID} onChange={handleRadioChange} />
+        <input type="checkbox" value="nationalID" checked={selectedValues.nationalID} onChange={handleRadioChange} />
         National ID
       </label>
       <label>
-        <input type="radio" value="biometric" checked={selectedValues.biometric} onChange={handleRadioChange} />
+        <input type="checkbox" value="biometric" checked={selectedValues.biometric} onChange={handleRadioChange} />
         Biometric
       </label>
+      <button className="button button--submit" type="submit" disabled={submitDisabled}>Proceed with selected docs</button>
     </form>
   )
 };

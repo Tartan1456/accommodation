@@ -9,4 +9,12 @@
   &--secondary {
     background-color: #85c9d1;
   }
+
+  &--submit {
+    margin: 1.5em 5em 0;
+
+    &:disabled {
+      background-color: #cccccc;
+    }
+  }
 }

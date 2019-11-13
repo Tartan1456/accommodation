@@ -4,4 +4,9 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 1em;
+
+  input[type="checkbox"] {
+    appearance: radio;
+    color: #000000;
+  }
 }
